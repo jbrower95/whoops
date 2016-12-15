@@ -27,6 +27,7 @@ AWS = {
 
 def entropy(string):
     "Calculates the Shannon entropy of a string"
+    # from http://stackoverflow.com/questions/2979174/how-do-i-compute-the-approximate-entropy-of-a-bit-string
     prob = [ float(string.count(c)) / len(string) for c in dict.fromkeys(list(string)) ]
     entropy = - sum([ p * math.log(p) / math.log(2.0) for p in prob ])
     return entropy
