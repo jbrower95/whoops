@@ -83,7 +83,11 @@ def main():
     - It receives the name and location of the remote as parameters, and a list of to-be-updated refs through stdin. 
     - You can use it to validate a set of ref updates before a push occurs (a non-zero exit code will abort the push).
     '''
-    all_refs = raw_input("").split()
+    try:
+        all_refs = raw_input("").split()
+    except EOFError:
+        # no refs to process
+        return
     refs = []
     identifier = None
     refHash = None
